@@ -50,9 +50,9 @@ function smarty_function_combine($params, &$smarty)
                 $output_filename = '';
                 foreach ($filelist as $file) {
                     if ($params['type'] == 'js') {
-                        $output_filename .= '<script type="text/javascript" src="//' . getenv('SERVER_NAME') . $file['name'].'" charset="utf-8"></script>' . "\n";
+                        $output_filename .= '<script type="text/javascript" src="' . base_url() . $file['name'].'" charset="utf-8"></script>' . "\n";
                     } elseif ($params['type'] == 'css') {
-                        $output_filename .= '<link type="text/css" rel="stylesheet" href="//' . getenv('SERVER_NAME') . $file['name'] . '" />' . "\n";
+                        $output_filename .= '<link type="text/css" rel="stylesheet" href="' . base_url() . $file['name'] . '" />' . "\n";
                     }
                 }
 
@@ -140,6 +140,23 @@ function smarty_function_combine($params, &$smarty)
             }
         }
     }
+
+    /**
+     * This function gets the base url for the project where this plugin is used
+     * If this plugin is used within Code Igniter, the base_url() would have already been defined
+     */
+    if ( ! function_exists('base_url')) {
+        function base_url(){
+
+            return sprintf(
+                "%s://%s%s/",
+                isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+                $_SERVER['SERVER_NAME'],
+                rtrim(dirname($_SERVER['PHP_SELF']), '/\\')
+            );
+        }
+    }
+
 
     if ( ! isset($params['input'])) {
         trigger_error('input cannot be empty', E_USER_NOTICE);
