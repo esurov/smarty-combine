@@ -14,7 +14,7 @@
  * Date:    September 5, 2015
  * Purpose: Combine content from several JS or CSS files into one
  * Input:   string to count
- * Example: {count input=$array_of_files_to_combine output=$path_to_output_file age=$seconds_to_try_recombine_file}
+ * Example: {combine input=$array_of_files_to_combine output=$path_to_output_file age=$seconds_to_try_recombine_file}
  *
  * @author Gorochov Ivan <dead23angel at gmail dot com>
  * @version 1.0
