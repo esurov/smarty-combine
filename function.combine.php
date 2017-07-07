@@ -151,7 +151,7 @@ function smarty_function_combine($params, &$smarty)
             return sprintf(
                 "%s://%s%s/",
                 isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-                $_SERVER['SERVER_NAME'],
+                $_SERVER['HTTP_HOST'],
                 rtrim(dirname($_SERVER['PHP_SELF']), '/\\')
             );
         }
