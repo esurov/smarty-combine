@@ -84,7 +84,7 @@ function smarty_function_combine($params, &$smarty)
                     mkdir($dirname, 0755, true);
                 }
 
-                $fh = fopen($params['file_path'] . $output_filename, 'a+');
+                $fh = fopen($params['file_path'] . $output_filename, 'w');
 
                 if (flock($fh, LOCK_EX)) {
                     foreach ($filelist as $file) {
