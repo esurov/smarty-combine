@@ -1,6 +1,6 @@
 
 {
-    "name": "dead23angel/smarty-combine",
+    "name": "leifnel/smarty-combine",
     "description": "Combine and minify many JS or CSS to one file.",
     "license": "MIT",
     "keywords": [
@@ -9,8 +9,8 @@
     ],
     "authors": [
         {
-            "name": "Gorochov Ivan",
-            "homepage": "https://github.com/dead23angel",
+            "name": "Leif Neland",
+            "homepage": "https://github.com/leifnel",
             "role": "Developer"
         }
     ],
