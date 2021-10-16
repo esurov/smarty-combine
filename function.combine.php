@@ -90,10 +90,12 @@ function smarty_function_combine($params, &$smarty)
                     foreach ($filelist as $file) {
                         $min = '';
 
+                        $dirname = dirname(str_replace($_SERVER['DOCUMENT_ROOT'],'',$params['file_path'] . $file['name'])); 
+                                                
                         if ($params['type'] == 'js') {
                             $min = JSMin::minify(file_get_contents($params['file_path'] . $file['name']));
                         } elseif ($params['type'] == 'css') {
-                            $min = CSSMin::minify(file_get_contents($params['file_path'] . $file['name']));
+                            $min = CSSMin::minify(preg_replace('/url\\(((?>["\']?))(?!(\\/|http(s)?:|data:|#))(.*?)\\1\\)/', 'url("' . $dirname . '/$4")', file_get_contents($params['file_path'] . $file['name'])));
                         } else {
                             fputs($fh, PHP_EOL . PHP_EOL . '/* ' . $file['name'] . ' @ ' . date('c', $file['time']) . ' */' . PHP_EOL . PHP_EOL);
                             $min = file_get_contents($params['file_path'] . $file['name']);
