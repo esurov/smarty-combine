@@ -29,3 +29,7 @@ It can be useful for big projects with a lot of several small CSS and JS files.
 * **age** - value of seconds between checks when original files were changed. By default it is 3600 - one hour. You can omit this parameter.
 * **debug** - parameter in the value of TRUE, disable compilation useful for debugging when developing a site.. By default it is FALSE. You can omit this parameter.
 
+Basedir of css-file is added to relative paths in url()
+
+A semicolon is added at the end of .js-files, as it is not needed at the end
+of a file, but is needed between concatenated files.

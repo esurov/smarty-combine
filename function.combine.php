@@ -93,7 +93,7 @@ function smarty_function_combine($params, &$smarty)
                         $dirname = dirname(str_replace($_SERVER['DOCUMENT_ROOT'],'',$params['file_path'] . $file['name'])); 
                                                 
                         if ($params['type'] == 'js') {
-                            $min = JSMin::minify(file_get_contents($params['file_path'] . $file['name']));
+                            $min = JSMin::minify(file_get_contents($params['file_path'] . $file['name'])) . ";" ;
                         } elseif ($params['type'] == 'css') {
                             $min = CSSMin::minify(preg_replace('/url\\(((?>["\']?))(?!(\\/|http(s)?:|data:|#))(.*?)\\1\\)/', 'url("' . $dirname . '/$4")', file_get_contents($params['file_path'] . $file['name'])));
                         } else {
