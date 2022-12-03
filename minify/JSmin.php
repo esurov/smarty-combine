@@ -312,7 +312,7 @@ class JSMin
                 $c = null;
             }
         }
-        if (ord($c) >= self::ORD_SPACE || $c === "\n" || $c === null) {
+        if ($c === null || $c === "\n" || ord((string)$c) >= self::ORD_SPACE) {
             return $c;
         }
         if ($c === "\r") {
@@ -329,7 +329,7 @@ class JSMin
      */
     protected function isEOF($a)
     {
-        return ord($a) <= self::ORD_LF;
+        return ord((string)$a) <= self::ORD_LF;
     }
 
     /**
@@ -364,7 +364,7 @@ class JSMin
         while (true) {
             $get = $this->get();
             $comment .= $get;
-            if (ord($get) <= self::ORD_LF) { // end of line reached
+            if (ord((string)$get) <= self::ORD_LF) { // end of line reached
                 // if IE conditional comment
                 if (preg_match('/^\\/@(?:cc_on|if|elif|else|end)\\b/', $comment)) {
                     $this->keptComment .= "/{$comment}";
